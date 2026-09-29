@@ -7,7 +7,7 @@ Tout le reste est à écrire — voir le TD 1.
 import pytest
 
 from fleet_api.models import Position
-from fleet_api.telemetry import battery_percentage, distance_m
+from fleet_api.telemetry import battery_percentage, distance_m, is_low_battery, path_length_m, average_speed_mps, estimate_runtime_minutes, median_voltage_mv, robot_state, detect_voltage_dropouts, fleet_summary
 
 # ---------------------------------------------------------------------------
 # Exemple 1 — un test simple, avec un cas nominal et les deux bornes.
@@ -48,6 +48,26 @@ def test_battery_percentage_rejette_des_bornes_incoherentes():
     """Une plage de tension invalide lève une ValueError."""
     with pytest.raises(ValueError, match="strictement supérieur"):
         battery_percentage(11_000, empty_mv=12_000, full_mv=11_000)
+
+def test_is_low_battery():
+    """Test de la fonction is_low_battery."""
+    assert is_low_battery(100) == True  # Tension vide
+    assert is_low_battery(10) == False  # Tension pleine
+    assert is_low_battery(20) == False  # Tension moyenne
+    assert is_low_battery(90) == True  # Tension très basse
+
+def test_path_length_m():
+    assert path_length_m(Position(0, 0), Position(3, 4)) == 5.0
+    assert path_length_m(Position(0, 0), Position(0, 0)) == 0.0
+
+def test_average_speed_mps():
+    assert average_speed_mps(10.0, 5.0) == 2.0
+    assert average_speed_mps(10.0, 0.0) is None
+
+def test_estimate_runtime_minutes():
+    assert estimate_runtime_minutes(50.0, 2.0) == 25.0
+    assert estimate_runtime_minutes(50.0, 0.0) is None
+
 
 
 # ---------------------------------------------------------------------------
