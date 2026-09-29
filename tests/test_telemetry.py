@@ -51,10 +51,10 @@ def test_battery_percentage_rejette_des_bornes_incoherentes():
 
 def test_is_low_battery():
     """Test de la fonction is_low_battery."""
-    assert is_low_battery(80) == True  # Tension vide
-    assert is_low_battery(10) == False  # Tension pleine
-    assert is_low_battery(20) == False  # Tension moyenne
-    assert is_low_battery(90) == True  # Tension très basse
+    assert is_low_battery(0) == True  # Tension vide
+    assert is_low_battery(100) == False  # Tension pleine
+    assert is_low_battery(50) == False  # Tension moyenne
+    assert is_low_battery(10) == True  # Tension très basse
 
 def test_path_length_m():
     assert path_length_m(Position(0, 0), Position(3, 4)) == 5.0
