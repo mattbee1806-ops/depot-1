@@ -57,8 +57,8 @@ def test_is_low_battery():
     assert is_low_battery(10) == True  # Tension très basse
 
 def test_path_length_m():
-    assert path_length_m(Position(0, 0), Position(3, 4)) == 5.0
-    assert path_length_m(Position(0, 0), Position(0, 0)) == 0.0
+    assert path_length_m(Position[(0, 0),(3, 4)]) == 5.0
+    assert path_length_m(Position[(0, 0),(0, 0)]) == 0.0
 
 def test_average_speed_mps():
     assert average_speed_mps(10.0, 5.0) == 2.0
