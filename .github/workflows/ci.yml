@@ -1,18 +1,61 @@
 name : CI
+#deuxieme essai
+on:
+  push:
+    branches:
+      - main
 
-on: [pull_request]
+  pull_request:
 
 jobs:
-   
-    test:
+    lint:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v7
             - name: installer uv
               uses: astral-sh/setup-uv@v10.0.1
+              with:
+                enable-cache: true
             - name: Installer les dépendances
               run: uv sync
+            - name: Vérifier le formatage
+              run: uv run ruff format --check .
+            - name: Linter le code
+              run: uv run ruff check .
+    test:
+        runs-on: ubuntu-latest
+        strategy:
+          fail-fast: false
+          matrix:
+            python-version: [3.12, 3.13,3.14]
+
+        steps:
+            - uses: actions/checkout@v7
+            - name: installer uv
+              uses: astral-sh/setup-uv@v10.0.1        
+              with:
+                enable-cache: true
+            - name: Installer les dépendances
+              run: uv sync --python ${{ matrix.python-version }}
 
             - name: Lancer les tests
-              run: uv run pytest -v
- 
+              run: uv run pytest -v --cov=. --cov-report=html
+            - name: Publier le rapport de couverture
+              uses: actions/upload-artifact@v7
+              with:
+                name: coverage-html-${{ matrix.python-version }} 
+                path: htmlcov/
+                retention-days: 7
+
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v7
+          - name: Installer uv
+            uses: astral-sh/setup-uv@v10.0.1
+            with:
+              enable-cache: true
+          - name: Installer les dépendances
+            run: uv sync
+          - name: Construire le paquet
+            run: uv build
