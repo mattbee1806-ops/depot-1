@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # Actions des workflows (.github/workflows) et action composite locale
+  - package-ecosystem: github-actions
+    directories:
+      - "/"
+      - "/.github/actions/setup"
+    schedule:
+      interval: weekly
+
+  # Dépendances Python du projet (pyproject.toml / uv.lock)
+  - package-ecosystem: uv
+    directory: "/"
+    schedule:
+      interval: weekly
