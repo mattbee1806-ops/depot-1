@@ -14,7 +14,7 @@ jobs:
             - name: Vérifier le formatage
               run: uv run ruff format --check .
             - name: Linter le code
-              run: uv run ruff check --fix .
+              run: uv run ruff check .
     test:
         runs-on: ubuntu-latest
         steps:
