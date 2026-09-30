@@ -6,9 +6,12 @@ on:
       - main
 
   pull_request:
-  
+
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
     lint:
@@ -38,7 +41,7 @@ jobs:
             - name: Publier le rapport de couverture
               uses: actions/upload-artifact@v7
               with:
-                name: coverage-html-${{ matrix.python-version }} 
+                name: coverage-html-${{ matrix.python-version }}
                 path: htmlcov/
                 retention-days: 7
 
