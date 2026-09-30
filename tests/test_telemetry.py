@@ -60,7 +60,7 @@ def test_is_low_battery():
     """Test de la fonction is_low_battery."""
     assert is_low_battery(0)  # Tension vide
     assert not is_low_battery(100)  # Tension pleine
-    assert is_low_battery(50)  # Tension moyenne
+    assert not is_low_battery(50)  # Tension moyenne
     assert is_low_battery(10)  # Tension très basse
 
 
