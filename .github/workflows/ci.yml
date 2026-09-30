@@ -1,11 +1,14 @@
 name : CI
-#deuxieme essai
+
 on:
   push:
     branches:
       - main
 
   pull_request:
+  
+  workflow_dispatch:
+
 
 jobs:
     lint:
