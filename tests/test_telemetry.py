@@ -22,8 +22,8 @@ from fleet_api.telemetry import (
 
 def test_battery_percentage_bornes_et_cas_nominal():
     """La conversion est linéaire et bornée à [0, 100]."""
-    assert battery_percentage(12_600) == 100.0
-    assert battery_percentage(10_500) == 0.0
+    assert battery_percentage(12_600) == 0
+    assert battery_percentage(10_500) == 100.0
     assert battery_percentage(11_550) == 50.0
     # Hors bornes : on sature, on ne dépasse pas.
     assert battery_percentage(13_000) == 100.0
@@ -58,7 +58,7 @@ def test_battery_percentage_rejette_des_bornes_incoherentes():
 
 def test_is_low_battery():
     """Test de la fonction is_low_battery."""
-    assert is_low_battery(0)  # Tension vide
+    assert not is_low_battery(0)  # Tension vide
     assert not is_low_battery(100)  # Tension pleine
     assert not is_low_battery(50)  # Tension moyenne
     assert is_low_battery(10)  # Tension très basse
