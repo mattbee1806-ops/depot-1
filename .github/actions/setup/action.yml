@@ -1,0 +1,19 @@
+name: 'Préparer l''environnement'
+description: 'Installe uv et les dépendances'
+
+inputs:
+  python-version:
+    required: false
+    default: '3.14'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Installer uv
+      uses: astral-sh/setup-uv@v10.0.1
+      with:
+        enable-cache: true
+
+    - name: Installer les dépendances
+      shell: bash
+      run: uv sync --python ${{ inputs.python-version }}
