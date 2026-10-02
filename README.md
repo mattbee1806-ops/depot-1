@@ -97,3 +97,6 @@ Lint analyse le code donc peu importe la version le code ne change pas
 image.yml 1.1 durée : 23s
 
 image.yml 1.2 durée :  28s (marche 1 : 28 s)
+
+image.yml 1.3 durée :  sans cache : 36s
+                    :  mode min : 22s
