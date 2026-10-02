@@ -90,6 +90,6 @@ build(6s)
 lint(10s)
 test(10s)
 
-Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-3.12.3-9ce1c33c8bd0c7a1b5f2ee6f20e5f47c0ce27d9175a125370c6493ac8501e7c3 
+Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-unknown-linux-gnu-ubuntu-24.04-3.12.3-9ce1c33c8bd0c7a1b5f2ee6f20e5f47c0ce27d9175a125370c6493ac8501e7c3
 
 Lint analyse le code donc peu importe la version le code ne change pas
