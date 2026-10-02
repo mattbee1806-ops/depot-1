@@ -100,3 +100,4 @@ image.yml 1.2 durée :  28s (marche 1 : 28 s)
 
 image.yml 1.3 durée :  sans cache : 36s
                     :  mode min : 22s
+                    :  mod max : 19s
