@@ -13,6 +13,7 @@ from fleet_api.telemetry import (
     distance_m,
     estimate_runtime_minutes,
     is_low_battery,
+    median_voltage_mv,
 )
 
 # ---------------------------------------------------------------------------
@@ -72,6 +73,12 @@ def test_average_speed_mps():
 def test_estimate_runtime_minutes():
     assert estimate_runtime_minutes(50.0, 2.0) == 25.0
     assert estimate_runtime_minutes(50.0, 0.0) is None
+
+
+def test_median_voltage_mv():
+    assert median_voltage_mv([12.0, 11.0, 10.0]) == 11.0
+    assert median_voltage_mv([12.0, 11.0]) == 11.5
+    assert median_voltage_mv([]) is None
 
 
 # ---------------------------------------------------------------------------
