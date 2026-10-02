@@ -22,5 +22,5 @@ jobs:
         with:
           context: .
           push: true
-          # Remplacer par votre compte GitHub EN MINUSCULES
-          tags: ghcr.io/<votre-compte-en-minuscules>/fleet-api:sha-${{ github.sha }}
+
+          tags: ghcr.io/mattbee1806-ops/fleet-api:sha-${{ github.sha }}
