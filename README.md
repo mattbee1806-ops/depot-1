@@ -94,6 +94,9 @@ Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-un
 
 Lint analyse le code donc peu importe la version le code ne change pas
 
+TD 5
+
+
 image.yml 1.1 durée : 23s
 
 image.yml 1.2 durée :  28s (marche 1 : 28 s)
@@ -101,3 +104,19 @@ image.yml 1.2 durée :  28s (marche 1 : 28 s)
 image.yml 1.3 durée :  sans cache : 36s
                     :  mode min : 22s
                     :  mod max : 19s
+
+TD 5: 1.4 Nombre de tags dans Packages :  3
+un pour le sha long
+un pour le main
+et un pour le latest
+
+{
+  "org.opencontainers.image.created": "2026-10-02T10:09:39.084Z",
+  "org.opencontainers.image.description": "",
+  "org.opencontainers.image.licenses": "",
+  "org.opencontainers.image.revision": "ded469a2feb7c17227a94a22c3ba6940ca29dd2f",
+  "org.opencontainers.image.source": "https://github.com/mattbee1806-ops/depot-1",
+  "org.opencontainers.image.title": "depot-1",
+  "org.opencontainers.image.url": "https://github.com/mattbee1806-ops/depot-1",
+  "org.opencontainers.image.version": "main"
+}
