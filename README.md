@@ -94,4 +94,6 @@ Trying to restore cache from GitHub Actions cache with key: setup-uv-2-x86_64-un
 
 Lint analyse le code donc peu importe la version le code ne change pas
 
-image.yml temps : 23s
+image.yml 1.1 durée : 23s
+
+image.yml 1.2 durée :  28s (marche 1 : 28 s)
